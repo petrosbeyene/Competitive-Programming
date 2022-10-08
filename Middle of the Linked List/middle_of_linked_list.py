@@ -5,9 +5,9 @@
 #         self.next = next
 class Solution:
     def middleNode(self, head):
-        val_list = []
+        h_list = []
         while head != None:
-            val_list.append(head)
+            h_list.append(head)
             head = head.next
-        return val_list[len(val_list)//2]
+        return h_list[len(h_list)//2]
         

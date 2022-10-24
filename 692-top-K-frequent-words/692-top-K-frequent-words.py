@@ -10,7 +10,7 @@ class Solution:
         
         ans = []
         for i in range(k):
-            frq, value = heapq.heappop(h)
+            value = heapq.heappop(h)[1]
             ans.append(value)
             
         

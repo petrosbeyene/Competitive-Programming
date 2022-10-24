@@ -1,28 +1,19 @@
-import heapq
-
+import collections, heapq
 
 class Solution:
     def topKFrequent(self, nums, k: int):
         if not nums or len(nums)==1:
             return nums
         
-        freq_dict = {}
-        for num in nums:
-            if num in freq_dict:
-                freq_dict[num] -= 1
-            else:
-                freq_dict[num] = -1
+        freq_dict = collections.Counter(nums)
         
         h = []
-        for key in freq_dict:
-            heapq.heappush(h, (freq_dict[key], key))
+        for key, value in freq_dict.items():
+            heapq.heappush(h, (-value, key))
         
         ans = []
-        cnt = 1
-        while cnt <= k:
-            freq, value = heapq.heappop(h)
+        for i in range(k):
+            value = heapq.heappop(h)[1]
             ans.append(value)
-            cnt += 1
         
         return ans
-            

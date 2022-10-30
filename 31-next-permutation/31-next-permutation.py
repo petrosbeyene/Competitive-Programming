@@ -15,5 +15,4 @@ class Solution:
                     break
                 j -= 1
                 
-        nums[i+1:] = nums[i+1:][::-1]
-        return nums       
+        nums[i+1:] = nums[i+1:][::-1]      

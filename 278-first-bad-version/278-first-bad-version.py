@@ -12,4 +12,5 @@ class Solution:
                 ans = mid
             elif not isBadVersion(mid):
                 beg = mid + 1
+                
         return ans

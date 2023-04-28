@@ -1,26 +1,21 @@
 class Solution:
     def countSubIslands(self, grid1: List[List[int]], grid2: List[List[int]]) -> int:
-        #union find
-        #change to graph datastructure
-        #Union Find- Union() -- merges two graphs into one
-        #           Find() -- finds the parent
-
-        def in_bound(rw, cl, grid):
-            m, n = len(grid), len(grid[0])
+        def in_bound(rw, cl, grid2):
+            m, n = len(grid2), len(grid2[0])
             return (0 <= rw < m) and (0 <= cl < n)
 
-        def dfs(grid, visited, rw, cl):
-            if not in_bound(rw, cl, grid):
+        def dfs(visited, rw, cl):
+            if not in_bound(rw, cl, grid2):
                 return 
-            if (rw, cl) in visited or grid[rw][cl] == 0:
+            if (rw, cl) in visited or grid2[rw][cl] == 0:
                 return
             
             visited.add((rw, cl))
-            grid[rw][cl] = 0
-            dfs(grid, visited, rw+1, cl)
-            dfs(grid, visited, rw-1, cl)
-            dfs(grid, visited, rw, cl+1)
-            dfs(grid, visited, rw, cl-1)
+            grid2[rw][cl] = 0
+            dfs(visited, rw+1, cl)
+            dfs(visited, rw-1, cl)
+            dfs(visited, rw, cl+1)
+            dfs(visited, rw, cl-1)
         
         def isSubIsland(visited):
             for pos in visited:
@@ -35,9 +30,10 @@ class Solution:
             for j in range(len(grid2[0])):
                 if grid2[i][j] == 1:
                     visited = set()
-                    dfs(grid2, visited, i, j)
+                    dfs(visited, i, j)
                     if isSubIsland(visited):
                         cnt += 1
         
         return cnt
+
 

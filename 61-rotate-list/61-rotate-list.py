@@ -16,20 +16,26 @@ class Solution:
         
 
         k = k % cnt
+        fast = slow = head
+        
         dummy = ListNode(0, head)
-        while head:
-            if cnt == k+1:
-                ans = temp = head.next
-                head.next = None
-                while temp and temp.next:
-                    temp = temp.next
-                
-                if temp:
-                    temp.next = dummy.next
-                    return ans
-                else:
-                    return dummy.next
-            
-            head = head.next
-            cnt -= 1
+        for _ in range(k):
+            fast = fast.next
+
+        while fast.next:
+            slow = slow.next
+            fast = fast.next
+        
+        ans = temp = slow.next
+        slow.next = None
+        
+        while temp and temp.next:
+            temp = temp.next
+        
+        if temp:
+            temp.next = dummy.next
+            return ans
+        else:
+            return dummy.next
+        
         

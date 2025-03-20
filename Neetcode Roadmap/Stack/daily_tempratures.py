@@ -1,5 +1,5 @@
 class Solution:
-    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+    def dailyTemperatures(self, temperatures):
         monotonic_stack = []
         answer = [0] * len(temperatures)
         for i, val in enumerate(temperatures):
